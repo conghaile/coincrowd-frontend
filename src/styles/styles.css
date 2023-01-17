@@ -1,0 +1,21 @@
+.links {
+    display: flex;
+    flex-direction: column;
+}
+
+#root {
+    color: white;
+}
+
+.coins {
+    display: flex;
+    flex-direction: column;
+}
+
+.coin {
+    background-color: white;
+}
+
+body {
+    background-color: black;
+}
