@@ -30,7 +30,6 @@ const DropDown = ({ coin, weeks, func }) => {
     }
 
     const handleOptionClick = (option) => {
-        console.log(weeks)
          if (option !== "All") {
             axios
                 .get(`http://localhost:3001/sourcedata/${option}/${coin}/${weeks}`)

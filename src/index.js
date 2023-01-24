@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './components/App'
 import Root from './routes/Root'
 import About from './routes/About'
+import Coin from './routes/Coin'
 import ErrorPage from './components/Error-page'
 import './styles/styles.css'
 
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <App />,
+            },
+            {
+                path: "coins/*",
+                element: <Coin />
             },
             {
                 path: "about/",

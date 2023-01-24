@@ -16,7 +16,9 @@ const CoinChart = ({ mentions, price }) => {
                     yAxisID: 'y',
                     label: "Mentions",
                     data: mentions,
-                    type: 'bar'
+                    type: 'bar',
+                    borderColor: 'rgba(255,255,255,0.8',
+                    backgroundColor: 'rgba(255,255,255,0.1'
                 },
                 {
                     yAxisID: 'y1',
