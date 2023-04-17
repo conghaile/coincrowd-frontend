@@ -51,7 +51,7 @@ const DropDown = ({ coin, weeks, func }) => {
     return (
         <div className="dropdown">
             <p>Select source</p>
-            <button onClick={handleOpen}>{menuText}</button>
+            <button onClick={() => setOpen(!open)}>{menuText}</button>
             {open ?
                 menuOptions.map(option => 
                     <button onClick={() => handleOptionClick(option)}>{option}</button>

@@ -5,9 +5,19 @@ import { enUS } from 'date-fns/locale'
 
 ChartJS.register({TimeScale, LinearScale, Filler, BarElement, PointElement, LineElement, CategoryScale, LineController, BarController, Tooltip})
 
+const timescaleMap = {
+    "24_hours": "minute",
+    "7_days": "hour",
+    "14_days": "day",
+    "30_days": "day",
+    "90_days": "day",
+    "180_days": "day",
+    "365_days": "day",
+    "max": "day"
 
+}
 
-const CoinChart = ({ mentions, price }) => {
+const CoinChart = ({ mentions, price, days }) => {
 
     
     const data = () => {
@@ -26,8 +36,7 @@ const CoinChart = ({ mentions, price }) => {
                     data: price,
                     type: 'line',
                     borderColor: 'rgb(25,225,81)',
-                    pointRadius: 0.1,
-                    pointHoverRadius: 0.1,
+                    
                     fill: true,
                     backgroundColor: (context) => {
                         var ctx = context.chart.ctx
@@ -51,6 +60,14 @@ const CoinChart = ({ mentions, price }) => {
             intersect: false,
             mode: 'index'
         },
+        elements: {
+            point: {
+                borderWidth: 0,
+                radius: 0,
+                hoverRadius: 0,
+                backgroundColor: 'rgba(0,0,0,0)'
+            }
+        },
         scales: {
             y: {
                 type: 'linear',
@@ -71,7 +88,7 @@ const CoinChart = ({ mentions, price }) => {
                     date: enUS
                 },
                 time: {
-                    unit: 'day',
+                    unit: timescaleMap[days],
                 },
                 grid: {
                     display: false

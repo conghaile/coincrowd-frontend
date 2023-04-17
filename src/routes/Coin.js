@@ -1,34 +1,87 @@
-import { useLocation, Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import ErrorPage from '../components/Error-page'
 import CoinChart from '../components/CoinChart'
-import DropDown from '../components/DropDown'
-import WeekSelect from '../components/WeekSelect'
+import DaySelect from '../components/DaySelect'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+
+import {
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
+    Box,
+    Button,
+    Link
+  } from '@chakra-ui/react'
+
+  import { ChevronDownIcon } from '@chakra-ui/icons'
 
 const Coin = () => {
     const location = useLocation()
     const coin = location.state
+    const url = `https://www.coingecko.com/en/coins/${coin}`
 
     const [coinData, setCoinData] = useState([])
-    const [weeks, setWeeks] = useState(1)
+    const [days, setDays] = useState("24_hours")
     const [priceData, setPriceData] = useState([])
+    const [sources, setSources] = useState([])
+    const [menuItems, setMenuItems] = useState([])
+    const [menuText, setMenuText] = useState("Select source")
+
+    useEffect(() => {
+        if (menuText === "All" || menuText === "Select source") {
+            axios
+                .get(`http://localhost:3001/coindata/${coin}/${days}`)
+                .then(response => {
+                    setCoinData(response.data)
+                })
+        } else {
+            axios
+                .get(`http://localhost:3001/sourcedata/${menuText}/${coin}/${days}`)
+                .then(response => {
+                    setCoinData(response.data)
+                })
+        }
+    }, [days, menuText])
 
     useEffect(() => {
         axios
-            .get(`http://localhost:3001/coindata/${coin}/${weeks}`)
-            .then(response => {
-                setCoinData(response.data)
-            })
-    }, [weeks])
-
-    useEffect(() => {
-        axios
-            .get(`http://localhost:3001/pricedata/${coin}/${weeks}`)
+            .get(`http://localhost:3001/pricedata/${coin}/${days}`)
             .then(response => {
                 setPriceData(response.data.prices)
             })
-    }, [weeks])
+    }, [days])
+
+    // Testing shit
+    // useEffect(() => {
+    //     axios
+    //         .get(`http://localhost:8001/price?coin=${coin}&days=${days}`)
+    //         .then(response => {
+    //             setPriceData(response.data)
+    //         })
+    // }, [days])
+
+    useEffect(() => {
+        axios
+            .get(`http://localhost:3001/sources/${coin}`)
+            .then(response => {
+                setSources(response.data)
+                setMenuItems(response.data)       
+            })
+    }, [])
+
+    useEffect(() => {
+        if (menuText === "Select source" || menuText === "All") {
+            setMenuItems(sources)
+        } else {
+            let newMenuItems = sources.filter(source => source !== menuText)
+            newMenuItems.push("All")
+            setMenuItems(newMenuItems)
+            
+        }
+        
+    }, [menuText])
 
     if (!coin) {
         return (
@@ -39,11 +92,19 @@ const Coin = () => {
     }
 
     return (
-        <div>
-            <DropDown coin={coin} weeks={weeks} func={setCoinData}/>
-            <WeekSelect func={setWeeks}/>
-            <CoinChart mentions={coinData} price={priceData}/>
-        </div>
+        <Box display='flex' flexDir='column' alignItems='flex-start'>
+            <Link color='white' href={url}>Coingecko sanity check</Link>
+            <Menu>
+                <MenuButton as={Button} rightIcon={<ChevronDownIcon/>}>
+                    {menuText}
+                </MenuButton>
+                <MenuList>
+                    {menuItems.map(item => <MenuItem onClick={() => setMenuText(item)}>{item}</MenuItem>)}
+                </MenuList>
+            </Menu>
+            <DaySelect func={setDays}/>
+            <CoinChart mentions={coinData} price={priceData} days={days}/>
+        </Box>
     )
 }
 
