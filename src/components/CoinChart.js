@@ -17,36 +17,18 @@ const timescaleMap = {
 
 }
 
-const CoinChart = ({ mentions, price, days }) => {
-
-    
+const CoinChart = ({ mentions, days }) => {    
     const data = () => {
         return {
             datasets: [{
                     yAxisID: 'y',
                     label: "Mentions",
                     data: mentions,
-                    type: 'bar',
-                    borderColor: 'rgba(255,255,255,0.8',
-                    backgroundColor: 'rgba(255,255,255,0.1'
-                },
-                {
-                    yAxisID: 'y1',
-                    label: "Price",
-                    data: price,
                     type: 'line',
-                    borderColor: 'rgb(25,225,81)',
-                    
-                    fill: true,
-                    backgroundColor: (context) => {
-                        var ctx = context.chart.ctx
-                        var gradient = ctx.createLinearGradient(0, 0, 0, 500)
-                        gradient.addColorStop(0,'rgba(25,225,81,0.25)')
-                        gradient.addColorStop(1, 'rgba(25,225,81,0.01)')
-                        return gradient
-                    },
-                    borderWidth: 2
+                    borderColor: 'rgba(0,0,0,1',
+                    backgroundColor: 'rgba(0,0,0,1'
                 },
+                
             ]
         }
     }
@@ -65,22 +47,17 @@ const CoinChart = ({ mentions, price, days }) => {
                 borderWidth: 0,
                 radius: 0,
                 hoverRadius: 0,
-                backgroundColor: 'rgba(0,0,0,0)'
+                // backgroundColor: 'rgba(0,0,0,0)'
             }
         },
         scales: {
             y: {
                 type: 'linear',
-                position: 'right',
+                position: 'left',
                 grid: {
-                    display: false
+                    display: true
                 },
-                display: false
-            },
-            y1 : {
-                type: 'linear',
-                display: 'true',
-                position: 'left'
+                display: true
             },
             x: {
                 type: 'time',

@@ -12,7 +12,8 @@ import {
     MenuItem,
     Box,
     Button,
-    Link
+    Link,
+    Text
   } from '@chakra-ui/react'
 
   import { ChevronDownIcon } from '@chakra-ui/icons'
@@ -30,28 +31,28 @@ const Coin = () => {
     const [menuText, setMenuText] = useState("Select source")
 
     useEffect(() => {
-        if (menuText === "All" || menuText === "Select source") {
-            axios
-                .get(`http://localhost:3001/coindata/${coin}/${days}`)
-                .then(response => {
-                    setCoinData(response.data)
+        
+        axios
+            .get(`http://localhost:3001/mentions/?coin=${coin}&timeframe=${days}`)
+            .then(response => {
+                setCoinData(response.data)
                 })
-        } else {
-            axios
-                .get(`http://localhost:3001/sourcedata/${menuText}/${coin}/${days}`)
-                .then(response => {
-                    setCoinData(response.data)
-                })
-        }
+        
+            // axios
+            //     .get(`http://localhost:3001/sourcedata/${menuText}/${coin}/${days}`)
+            //     .then(response => {
+            //         setCoinData(response.data)
+            //     })
+        
     }, [days, menuText])
 
-    useEffect(() => {
-        axios
-            .get(`http://localhost:3001/pricedata/${coin}/${days}`)
-            .then(response => {
-                setPriceData(response.data.prices)
-            })
-    }, [days])
+    // useEffect(() => {
+    //     axios
+    //         .get(`http://localhost:3001/pricedata/${coin}/${days}`)
+    //         .then(response => {
+    //             setPriceData(response.data.prices)
+    //         })
+    // }, [days])
 
     // Testing shit
     // useEffect(() => {
@@ -62,26 +63,26 @@ const Coin = () => {
     //         })
     // }, [days])
 
-    useEffect(() => {
-        axios
-            .get(`http://localhost:3001/sources/${coin}`)
-            .then(response => {
-                setSources(response.data)
-                setMenuItems(response.data)       
-            })
-    }, [])
+    // useEffect(() => {
+    //     axios
+    //         .get(`http://localhost:3001/sources/${coin}`)
+    //         .then(response => {
+    //             setSources(response.data)
+    //             setMenuItems(response.data)       
+    //         })
+    // }, [])
 
-    useEffect(() => {
-        if (menuText === "Select source" || menuText === "All") {
-            setMenuItems(sources)
-        } else {
-            let newMenuItems = sources.filter(source => source !== menuText)
-            newMenuItems.push("All")
-            setMenuItems(newMenuItems)
+    // useEffect(() => {
+    //     if (menuText === "Select source" || menuText === "All") {
+    //         setMenuItems(sources)
+    //     } else {
+    //         let newMenuItems = sources.filter(source => source !== menuText)
+    //         newMenuItems.push("All")
+    //         setMenuItems(newMenuItems)
             
-        }
+    //     }
         
-    }, [menuText])
+    // }, [menuText])
 
     if (!coin) {
         return (
@@ -93,7 +94,8 @@ const Coin = () => {
 
     return (
         <Box display='flex' flexDir='column' alignItems='flex-start'>
-            <Link color='white' href={url}>Coingecko sanity check</Link>
+            <Text as='b' fontSize="3xl">{coin}</Text>
+            <Link color='black' href={url}>Coingecko sanity check</Link>
             <Menu>
                 <MenuButton as={Button} rightIcon={<ChevronDownIcon/>}>
                     {menuText}
@@ -103,7 +105,7 @@ const Coin = () => {
                 </MenuList>
             </Menu>
             <DaySelect func={setDays}/>
-            <CoinChart mentions={coinData} price={priceData} days={days}/>
+            <CoinChart mentions={coinData} days={days}/>
         </Box>
     )
 }

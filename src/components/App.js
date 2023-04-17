@@ -27,20 +27,16 @@ const App = () => {
                 setSortedMentions(coins)
                 
                 let coinhash = {}
-                console.log("coins", coins)
                 coins.forEach(coin => coinhash[coin[0]] = coin[1])
-                console.log("coinhash", coinhash)
                 let sortedNames = Object.keys(coinhash).sort()
-                console.log("sortedNames", sortedNames)
                 let alphaCoins = []
                 sortedNames.forEach(name => {
                     let coin = []
                     coin.push(name, coinhash[name])
                     alphaCoins.push(coin)
                 })
-                console.log("alphaCoins", alphaCoins)
+                
                 setSortedAlpha(alphaCoins)
-                console.log("sortedAlpha", sortedAlpha)
             })
     }, [])
 
@@ -67,7 +63,7 @@ const App = () => {
                                 _hover={{
                                     color: "#85eab8"
                                 }}
-                                color="whiteAlpha.900"
+                                color="black"
                                 onClick={() => setCoins(sortedAlpha)}
                             >
                                 Coin
@@ -77,7 +73,7 @@ const App = () => {
                                 _hover={{
                                     color: "#85eab8"
                                 }}
-                                color="whiteAlpha.900"
+                                color="black"
                                 onClick={() => setCoins(sortedMentions)}
                             >
                                 Mentions (24h)
@@ -88,12 +84,12 @@ const App = () => {
                     <Tbody>
                         {coins.map(coin =>
                             <Tr>
-                                    <Td>
+                                    <Td color="black">
                                         <Link to={`/coins/${coin[0]}`} state={coin[0]}>
                                             {coin[0]}
                                         </Link>
                                     </Td>
-                                    <Td isNumeric>
+                                    <Td isNumeric color="black">
                                         {coin[1]}
                                     </Td>
                             </Tr>

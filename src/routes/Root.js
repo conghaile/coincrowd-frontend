@@ -1,19 +1,21 @@
 import { Outlet, Link } from 'react-router-dom'
-import { Box, Text } from '@chakra-ui/react'
+import { Box, Text, } from '@chakra-ui/react'
+import SearchBar from '../components/SearchBar'
 
 const Root = () => {
     return (
-        <Box bg="blackAlpha.900">
+        <Box bg="whiteAlpha.900">
             <Link to={`/`}>
-                <Text color='whiteAlpha.900'>CoinCrowd</Text>
+                <Text color='black'>CoinCrowd</Text>
             </Link>
-            <Text color='whiteAlpha.900'>Data-driven insights powered by the crowd.</Text>
+            <Text color='black'>Data-driven insights powered by the crowd.</Text>
+            <SearchBar />
             <div class="links">
                 <Link to={`/about`}>
-                    <Text color='whiteAlpha.900'>About</Text>
+                    <Text color='black'>About</Text>
                 </Link>
                 <Link to={`/`}>
-                    <Text color='whiteAlpha.900'>Coins</Text>
+                    <Text color='black'>Coins</Text>
                 </Link>
             </div>
             <div id="detail">
