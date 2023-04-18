@@ -19,7 +19,7 @@ const SearchDropdown = ({ results, search }) => {
         )
     } else if (search.length > 0 && results.length === 0) {
         return (
-            <div>Nudding found sir...</div>
+            <div>Nudding found sir... :(</div>
         )
     }
 }

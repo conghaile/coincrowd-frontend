@@ -24,19 +24,23 @@ const App = () => {
             .then(response => {
                 setCoins(response.data)
                 setSortedMentions(response.data)
-                setSortedMentions(coins)
+                setSortedMentions(response.data)
                 
-                let coinhash = {}
-                coins.forEach(coin => coinhash[coin[0]] = coin[1])
-                let sortedNames = Object.keys(coinhash).sort()
-                let alphaCoins = []
-                sortedNames.forEach(name => {
-                    let coin = []
-                    coin.push(name, coinhash[name])
-                    alphaCoins.push(coin)
-                })
-                
-                setSortedAlpha(alphaCoins)
+                // let coinhash = {}
+                // console.log("coins", coins)
+                // coins.forEach(coin => coinhash[coin[0]] = coin[1])
+                // console.log("coinhash", coinhash)
+                // let sortedNames = Object.keys(coinhash).sort()
+                // console.log("sorted names", sortedNames)
+                // let alphaCoins = []
+                // sortedNames.forEach(name => {
+                //     let coin = []
+                //     coin.push(name, coinhash[name])
+                //     alphaCoins.push(coin)
+                // })
+                // console.log("alphaCoins", alphaCoins)
+                // setSortedAlpha(alphaCoins)
+                // console.log("sortedAlpha", sortedAlpha)
             })
     }, [])
 
@@ -51,7 +55,7 @@ const App = () => {
             alphaCoins.push(coin)
         })
         setSortedAlpha(alphaCoins)
-    }, [sortedMentions])
+    }, [coins])
 
     return (
         <Box m={50}>
