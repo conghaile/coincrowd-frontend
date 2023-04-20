@@ -58,7 +58,7 @@ const App = () => {
     }, [coins])
 
     return (
-        <Box m={50}>
+        <Box my="1em">
             <TableContainer>
                 <Table variant="simple" color="whiteAlpha.800" bg="whiteAlpha.200">
                     <Thead>
