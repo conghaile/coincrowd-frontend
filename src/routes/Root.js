@@ -3,7 +3,11 @@ import { Box, Text, } from '@chakra-ui/react'
 import SearchBar from '../components/SearchBar'
 import Login from '../components/Login'
 
+
+
+
 const Root = () => {
+    
     return (
         <Box mx="5em" my="3em">
             <Box display="flex" justifyContent="space-between">
