@@ -29,11 +29,11 @@ const LoginModal = ({ clicked, setClicked }) => {
     if (clicked) {
         return (
             <Box left={0} right={0} top={0} bottom={0} position='fixed' height='100vh' width='100vw' backgroundColor='blackAlpha.700' display="flex" justifyContent="center" alignItems="center">
-                <Box display="flex" width='30vw' height='50vh' backgroundColor='white' padding="10px" flex-direction="column">
-                    <Box display="flex" flexDirection="row">
+                <Box width='30vw' height='50vh' backgroundColor='white' padding="10px" >
+                    <Box top={0} right={0}>
                         <Button onClick={handleClick}>Close</Button>
                     </Box>
-                    <Box>         
+                    <Box>       
                         <form onSubmit={handleSubmit}>
                             <FormControl isRequired>
                                 <FormLabel>Email</FormLabel>
