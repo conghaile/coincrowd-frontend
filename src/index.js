@@ -4,6 +4,7 @@ import App from './components/App'
 import Root from './routes/Root'
 import About from './routes/About'
 import Coin from './routes/Coin'
+import SignUp from './routes/SignUp'
 import ErrorPage from './components/Error-page'
 import { ChakraProvider } from '@chakra-ui/react'
 import './index.css'
@@ -29,6 +30,11 @@ const router = createBrowserRouter([
             {
                 path: "about/",
                 element: <About />,
+                errorElement: <ErrorPage />
+            },
+            {
+                path: "signup/",
+                element: <SignUp />,
                 errorElement: <ErrorPage />
             }
         ]

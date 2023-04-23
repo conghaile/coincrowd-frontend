@@ -1,4 +1,4 @@
-import { Box, Button, Input, InputGroup, InputRightElement, FormControl, FormLabel } from '@chakra-ui/react'
+import { Box, Button, Input, InputGroup, InputRightElement, FormControl, FormLabel, Link, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 import axios from 'axios'
 
@@ -16,7 +16,7 @@ const LoginModal = ({ clicked, setClicked }) => {
 
     const nativeLogin = (email, password) => {
         axios
-            .post(`${process.env.REACT_APP_BASEURL}/login`, {
+            .post(`${process.env.REACT_APP_BASEURL}/native-login`, {
                 "email": email,
                 "password": password
             })
@@ -24,7 +24,7 @@ const LoginModal = ({ clicked, setClicked }) => {
                 console.log(res)
             })
     }
-    console.log(process.env.REACT_APP_BASEURL)
+    
 
     if (clicked) {
         return (
@@ -54,6 +54,7 @@ const LoginModal = ({ clicked, setClicked }) => {
                         </form>
                         <Button>Sign in with Google</Button>
                         <Button>Sign in with Facebook</Button>
+                        <Box>Need an account? <Link href={`/signup`}>Sign up.</Link></Box>
                     </Box>
                 </Box>
             </Box>
