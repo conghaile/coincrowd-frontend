@@ -1,25 +1,32 @@
 import { Box, Button, Input, InputGroup, InputRightElement, FormControl, FormLabel } from '@chakra-ui/react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 const SignUp = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [show, setShow] = useState(false)
+    const [failed, setFailed] = useState(false)
 
     const handleShow = () => setShow(!show)
 
     const handleSubmit = () => {
+        setFailed(false)
         axios
             .post(`${process.env.REACT_APP_BASEURL}/native-signup`, {
                 "email": email,
                 "password": password
             })
-            .then(res => {
-                console.log(res)
+            .catch((error) => {
+                if (error) {
+                    setFailed(true)
+                }
             })
     }
 
+    useEffect(() => {
+        console.log(failed)
+    }, [failed])
     
     return (
         <Box>
@@ -53,6 +60,7 @@ const SignUp = () => {
                         </Button>
                     </form>
                 </Box>
+                {failed ? <Box>An account already exists with that email address. Please sign in.</Box> : <div></div>}
             </Box>
         </Box>
     )
