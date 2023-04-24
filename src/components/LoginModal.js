@@ -6,22 +6,26 @@ const LoginModal = ({ clicked, setClicked }) => {
     const [show, setShow] = useState(false)
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [failed, setFailed] = useState(false)
 
     const handleClick = () => setClicked(!clicked)
     const handleShow = () => setShow(!show)
-    const handleSubmit = async event => {
+    const handleSubmit = event => {
         event.preventDefault()
         nativeLogin(email, password)
     };
 
     const nativeLogin = (email, password) => {
+        setFailed(false)
         axios
             .post(`${process.env.REACT_APP_BASEURL}/native-login`, {
                 "email": email,
                 "password": password
             })
-            .then(res => {
-                console.log(res)
+            .catch(error => {
+                if (error) {
+                    setFailed(true)
+                }
             })
     }
     
@@ -48,6 +52,7 @@ const LoginModal = ({ clicked, setClicked }) => {
                                     </InputRightElement>
                                 </InputGroup>
                             </FormControl>
+                            {failed ? <Text color="red">Incorrect email or password.</Text> : <div></div>}
                             <Button type="submit" width="full" variant="outline" mt={4}>
                                 Sign in
                             </Button>

@@ -1,5 +1,5 @@
 import { Box, Button, Input, InputGroup, InputRightElement, FormControl, FormLabel } from '@chakra-ui/react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 
 const SignUp = () => {
@@ -23,10 +23,6 @@ const SignUp = () => {
                 }
             })
     }
-
-    useEffect(() => {
-        console.log(failed)
-    }, [failed])
     
     return (
         <Box>
