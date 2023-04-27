@@ -16,7 +16,12 @@ const SignUp = () => {
             .post(`${process.env.REACT_APP_BASEURL}/native-signup`, {
                 "email": email,
                 "password": password
-            })
+            },
+            {
+                withCredentials: true,
+                credentials: 'include'
+            }
+            )
             .catch((error) => {
                 if (error) {
                     setFailed(true)

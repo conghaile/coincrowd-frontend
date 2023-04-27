@@ -1,5 +1,6 @@
 import { Box, Button, Input, InputGroup, InputRightElement, FormControl, FormLabel, Link, Text } from '@chakra-ui/react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 const LoginModal = ({ clicked, setClicked }) => {
@@ -7,6 +8,7 @@ const LoginModal = ({ clicked, setClicked }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [failed, setFailed] = useState(false)
+    const navigate = useNavigate()
 
     const handleClick = () => setClicked(!clicked)
     const handleShow = () => setShow(!show)
@@ -21,6 +23,11 @@ const LoginModal = ({ clicked, setClicked }) => {
             .post(`${process.env.REACT_APP_BASEURL}/native-login`, {
                 "email": email,
                 "password": password
+            }, {
+                withCredentials: true,
+                credentials: 'include'
+            }).then(() => {
+                window.location.reload()
             })
             .catch(error => {
                 if (error) {

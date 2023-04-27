@@ -4,8 +4,6 @@ import SearchBar from '../components/SearchBar'
 import Login from '../components/Login'
 
 
-
-
 const Root = () => {
     
     return (
