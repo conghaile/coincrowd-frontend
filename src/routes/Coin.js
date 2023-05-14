@@ -5,6 +5,7 @@ import DaySelect from '../components/DaySelect'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
+
 import {
     Menu,
     MenuButton,
@@ -33,13 +34,13 @@ const Coin = () => {
     useEffect(() => {
         
         axios
-            .get(`http://localhost:3001/mentions/?coin=${coin}&timeframe=${days}`)
+            .get(`${process.env.REACT_APP_BASEURL}/mentions/?coin=${coin}&timeframe=${days}`)
             .then(response => {
                 setCoinData(response.data)
                 })
         
             // axios
-            //     .get(`http://localhost:3001/sourcedata/${menuText}/${coin}/${days}`)
+            //     .get(`${process.env.REACT_APP_BASEURL}/sourcedata/${menuText}/${coin}/${days}`)
             //     .then(response => {
             //         setCoinData(response.data)
             //     })
@@ -48,7 +49,7 @@ const Coin = () => {
 
     // useEffect(() => {
     //     axios
-    //         .get(`http://localhost:3001/pricedata/${coin}/${days}`)
+    //         .get(`${process.env.REACT_APP_BASEURL}/pricedata/${coin}/${days}`)
     //         .then(response => {
     //             setPriceData(response.data.prices)
     //         })
@@ -57,7 +58,7 @@ const Coin = () => {
     // Testing shit
     // useEffect(() => {
     //     axios
-    //         .get(`http://localhost:8001/price?coin=${coin}&days=${days}`)
+    //         .get(`${process.env.REACT_APP_BASEURL}/price?coin=${coin}&days=${days}`)
     //         .then(response => {
     //             setPriceData(response.data)
     //         })
@@ -65,7 +66,7 @@ const Coin = () => {
 
     // useEffect(() => {
     //     axios
-    //         .get(`http://localhost:3001/sources/${coin}`)
+    //         .get(`${process.env.REACT_APP_BASEURL}/sources/${coin}`)
     //         .then(response => {
     //             setSources(response.data)
     //             setMenuItems(response.data)       

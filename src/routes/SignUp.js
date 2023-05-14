@@ -39,7 +39,7 @@ const SignUp = () => {
                     }}>
                         <FormControl isRequired>
                             <FormLabel>Email</FormLabel>
-                            <Input placeholder="Username" onSubmit={(e) => {
+                            <Input placeholder="Email" onSubmit={(e) => {
                                 e.preventDefault()
                                 handleSubmit()
                             }} onChange = {event => setEmail(event.currentTarget.value)}/>

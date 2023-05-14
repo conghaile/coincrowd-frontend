@@ -7,6 +7,7 @@ import Coin from './routes/Coin'
 import SignUp from './routes/SignUp'
 import ErrorPage from './components/Error-page'
 import { ChakraProvider } from '@chakra-ui/react'
+import { Verification } from './routes/Verification'
 import './index.css'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
@@ -36,9 +37,14 @@ const router = createBrowserRouter([
                 path: "signup/",
                 element: <SignUp />,
                 errorElement: <ErrorPage />
-            }
+            },
         ]
     },
+    {
+        path: "/verification",
+        element: <Verification />,
+        errorElement: <ErrorPage />
+    }
 ])
 
 ReactDOM.createRoot(document.getElementById("root")).render(

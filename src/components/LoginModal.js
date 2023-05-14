@@ -30,6 +30,7 @@ const LoginModal = ({ clicked, setClicked }) => {
                 window.location.reload()
             })
             .catch(error => {
+                //Need to handle specific response codes from server
                 if (error) {
                     setFailed(true)
                 }
@@ -48,7 +49,7 @@ const LoginModal = ({ clicked, setClicked }) => {
                         <form onSubmit={handleSubmit}>
                             <FormControl isRequired>
                                 <FormLabel>Email</FormLabel>
-                                <Input placeholder="Username" onSubmit={handleSubmit} onChange = {event => setEmail(event.currentTarget.value)}/>
+                                <Input placeholder="Email" onSubmit={handleSubmit} onChange = {event => setEmail(event.currentTarget.value)}/>
                             </FormControl>
                             <FormControl isRequired>
                                 <FormLabel>Password</FormLabel>
