@@ -14,7 +14,11 @@ const Login = () => {
     
     const handleLogout = () => {
         setLoggedIn(false)
-        axios.get(`${process.env.REACT_APP_BASEURL}/logout`).then(() => document.cookie = 'SESSION_ID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;')
+        axios.get(`${process.env.REACT_APP_BASEURL}/logout`).then(() => {
+            document.cookie = 'SESSION_ID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+            window.location.reload()
+        })
+        
     }
     
     useEffect(() => {

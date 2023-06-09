@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Box,
+import { Box, IconButton,
     Table,
     Thead,
     Tbody,
@@ -9,38 +9,30 @@ import { Box,
     Th,
     Td,
     TableCaption,
+    Icon,
     TableContainer, } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
+import { FaRegStar } from 'react-icons/fa'
 import axios from 'axios'
+import { Favorite } from './Favorite'
+import { LoginPrompt } from './LoginPrompt'
 
 const App = () => {
     const [coins, setCoins] = useState([])
     const [sortedAlpha, setSortedAlpha] = useState([])
     const [sortedMentions, setSortedMentions] = useState([])
+    const [loggedIn, setLoggedIn] = useState(false)
+    const [loginPrompt, setLoginPrompt] = useState(false)
+
+    const token = document.cookie.split('=')[1]
 
     useEffect(() => {
         axios
-            .get('http://localhost:3001/coins')
+            .get(`${process.env.REACT_APP_BASEURL}/coins`)
             .then(response => {
                 setCoins(response.data)
                 setSortedMentions(response.data)
                 setSortedMentions(response.data)
-                
-                // let coinhash = {}
-                // console.log("coins", coins)
-                // coins.forEach(coin => coinhash[coin[0]] = coin[1])
-                // console.log("coinhash", coinhash)
-                // let sortedNames = Object.keys(coinhash).sort()
-                // console.log("sorted names", sortedNames)
-                // let alphaCoins = []
-                // sortedNames.forEach(name => {
-                //     let coin = []
-                //     coin.push(name, coinhash[name])
-                //     alphaCoins.push(coin)
-                // })
-                // console.log("alphaCoins", alphaCoins)
-                // setSortedAlpha(alphaCoins)
-                // console.log("sortedAlpha", sortedAlpha)
             })
     }, [])
 
@@ -56,6 +48,12 @@ const App = () => {
         })
         setSortedAlpha(alphaCoins)
     }, [coins])
+
+    useEffect(() => {
+        if (token !== undefined && token !== "PENDING VERIFICATION") {
+            setLoggedIn(true)
+        }
+    }, [])
 
     return (
         <Box my="1em">
@@ -89,6 +87,7 @@ const App = () => {
                         {coins.map(coin =>
                             <Tr>
                                     <Td color="black">
+                                        <Favorite loggedIn={loggedIn} loginPrompt={loginPrompt} setLoginPrompt={setLoginPrompt}/> 
                                         <Link to={`/coins/${coin[0]}`} state={coin[0]}>
                                             {coin[0]}
                                         </Link>
@@ -101,7 +100,8 @@ const App = () => {
                     </Tbody>
                     <Tfoot>Powered by Coingecko</Tfoot>
                 </Table>
-        </TableContainer>
+            </TableContainer>
+            <LoginPrompt loginPrompt={loginPrompt} setLoginPrompt={setLoginPrompt}/>
         </Box>
     )
 }

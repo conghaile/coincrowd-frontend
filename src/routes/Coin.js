@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom'
 import ErrorPage from '../components/Error-page'
-import CoinChart from '../components/CoinChart'
-import DaySelect from '../components/DaySelect'
+import CoinChart from '../components/coin/CoinChart'
+import DaySelect from '../components/coin/DaySelect'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 

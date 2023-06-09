@@ -1,4 +1,5 @@
 import { Box, Button, Input, InputGroup, InputRightElement, FormControl, FormLabel } from '@chakra-ui/react'
+import { SignupMessage } from '../components/signup/SignupMessage'
 import { useState } from 'react'
 import axios from 'axios'
 
@@ -6,12 +7,12 @@ const SignUp = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [show, setShow] = useState(false)
-    const [failed, setFailed] = useState(false)
+    const [emailResponse, setEmailResponse] = useState("")
 
     const handleShow = () => setShow(!show)
 
     const handleSubmit = () => {
-        setFailed(false)
+        setEmailResponse("")
         axios
             .post(`${process.env.REACT_APP_BASEURL}/native-signup`, {
                 "email": email,
@@ -20,11 +21,17 @@ const SignUp = () => {
             {
                 withCredentials: true,
                 credentials: 'include'
-            }
-            )
+            }).then(res => {
+                if (res.status === 200) {
+                    setEmailResponse("success")
+                }
+            })
             .catch((error) => {
-                if (error) {
-                    setFailed(true)
+                const res = error.response
+                if (res.status === 502) {
+                    setEmailResponse("error")
+                } else if (res.status === 401) {
+                    setEmailResponse("failed")
                 }
             })
     }
@@ -61,7 +68,7 @@ const SignUp = () => {
                         </Button>
                     </form>
                 </Box>
-                {failed ? <Box>An account already exists with that email address. Please sign in.</Box> : <div></div>}
+                <SignupMessage response={emailResponse}/>
             </Box>
         </Box>
     )

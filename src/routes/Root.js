@@ -1,7 +1,7 @@
 import { Outlet, Link } from 'react-router-dom'
 import { Box, Text, } from '@chakra-ui/react'
-import SearchBar from '../components/SearchBar'
-import Login from '../components/Login'
+import SearchBar from '../components/root/SearchBar'
+import Login from '../components/root/Login'
 
 
 const Root = () => {

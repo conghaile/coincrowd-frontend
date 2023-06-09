@@ -7,7 +7,9 @@ const LoginModal = ({ clicked, setClicked }) => {
     const [show, setShow] = useState(false)
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [failed, setFailed] = useState(false)
+    const [badPassword, setBadPassword] = useState(false)
+    const [unverified, setUnverified] = useState(false)
+    const [noAccountExists, setNoAccountExists] = useState(false)
     const navigate = useNavigate()
 
     const handleClick = () => setClicked(!clicked)
@@ -18,7 +20,9 @@ const LoginModal = ({ clicked, setClicked }) => {
     };
 
     const nativeLogin = (email, password) => {
-        setFailed(false)
+        setBadPassword(false)
+        setUnverified(false)
+        setNoAccountExists(false)
         axios
             .post(`${process.env.REACT_APP_BASEURL}/native-login`, {
                 "email": email,
@@ -31,8 +35,13 @@ const LoginModal = ({ clicked, setClicked }) => {
             })
             .catch(error => {
                 //Need to handle specific response codes from server
-                if (error) {
-                    setFailed(true)
+                const res = error.response
+                if (res.status === 401) {
+                    setBadPassword(true)
+                } else if (res.status === 403) {
+                    setUnverified(true)
+                } else if (res.status === 404) {
+                    setNoAccountExists(true)
                 }
             })
     }
@@ -60,7 +69,8 @@ const LoginModal = ({ clicked, setClicked }) => {
                                     </InputRightElement>
                                 </InputGroup>
                             </FormControl>
-                            {failed ? <Text color="red">Incorrect email or password.</Text> : <div></div>}
+                            {badPassword ? <Text color="red">Incorrect email or password.</Text> : <div></div>}
+                            {noAccountExists ? <Text color="red">No account exists with that email. Please sign up instead.</Text> : <div></div>}
                             <Button type="submit" width="full" variant="outline" mt={4}>
                                 Sign in
                             </Button>

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './components/App'
+import App from './components/coin/App'
 import Root from './routes/Root'
 import About from './routes/About'
 import Coin from './routes/Coin'

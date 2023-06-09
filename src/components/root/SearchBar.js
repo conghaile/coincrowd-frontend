@@ -13,7 +13,7 @@ const SearchBar = () => {
     useEffect(() => {
         if (searchTerm.length > 0) {
             axios
-                .get(`http://localhost:3001/search?search=${searchTerm}`)
+                .get(`${process.env.REACT_APP_BASEURL}/search?search=${searchTerm}`)
                 .then(res => {
                     setResults(res.data)
                 })

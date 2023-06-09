@@ -10,11 +10,11 @@ export const Verification = () => {
     
     useEffect(() => {
         if (token !== null) {
-            axios.get(`${process.env.REACT_APP_CLIENTROOT}/verify-user?token=${token}`, {
+            axios.get(`${process.env.REACT_APP_BASEURL}/verify-user?token=${token}`, {
                 withCredentials: true,
                 credentials: 'include'
             }).then(() => {
-                window.location.replace(`${process.env.REACT_APP_BASEURL}`)
+                window.location.replace(`${process.env.REACT_APP_CLIENTROOT}`)
             }).catch(err => {
                 if (err) {
                     setFailed(true)
