@@ -26,10 +26,6 @@ const SearchBar = () => {
         setSearchTerm("")
     }, [location])
 
-    // useEffect(() => {
-    //     console.log(results)
-    // }, [results])
-
     return (
         <div className="searchBarContainer">
             <Input htmlsize={5} placeholder="Search..." width="auto" value={searchTerm} onChange={handleChange}/>

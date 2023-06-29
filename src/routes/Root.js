@@ -13,7 +13,7 @@ const Root = () => {
                     <Link to={`/`}>
                         <Text color='black'>CoinCrowd</Text>
                     </Link>
-                    <Text color='black'>Data-driven insights powered by the crowd.</Text>
+                    <br />
                     <div class="links">
                         <Link to={`/about`}>
                             <Text color='black'>About</Text>

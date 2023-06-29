@@ -3,9 +3,6 @@ import { Box } from '@chakra-ui/react'
 
 const SearchDropdown = ({ results, search }) => {
     if (results.length > 0) {
-        results.forEach(result => {
-            console.log(result[0])
-        })
         return (
             <Box borderColor='black' border='1px'> 
                 {results.map(result => 

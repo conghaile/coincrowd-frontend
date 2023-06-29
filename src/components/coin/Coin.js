@@ -1,7 +1,6 @@
 import { Favorite } from './Favorite'
 import { Link } from 'react-router-dom'
 import { Tr, Td } from '@chakra-ui/react'
-import { useState } from 'react'
 
 
 export const Coin = ({ loggedIn, loginPrompt, setLoginPrompt, coin, favoritesList, setFavoritesList }) => {

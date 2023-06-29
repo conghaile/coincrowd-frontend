@@ -57,7 +57,8 @@ const CoinChart = ({ mentions, days }) => {
                 grid: {
                     display: true
                 },
-                display: true
+                display: true,
+                beginAtZero: true
             },
             x: {
                 type: 'time',
