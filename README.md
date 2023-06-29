@@ -17,10 +17,11 @@ If you sweet babes wanted to crowdfund an API key that'd be freaking epic but I 
  - **Digging into spaCy's source code to figure out why it shits itself on cloud services/writing my own NER training from scratch.**
  I'm just not gonna do it. After this project I'm completely out of fucks to give about ML beyond downloading hot new mikus from /lmg/. If you actually know what you're doing and want to make a better model, I'm still sitting on a fuckload of scraped /biz/ posts that I could be [convinced](mailto:quandaviousgooch@proton.me) to hand over.
  - **[Your solution that fixes everything quickly and cheaply that I haven't thought of].**
- Fork me, daddy. If there's enough interest that people want to contribute in any way that'd be rad.
+  Fork me, daddy. If there's enough interest that people want to contribute in any way that'd be rad.
 
 ## Why not use ChatGPT?
-[insert 'jak here]
+![Alt text](https://github.com/conghaile/coincrowd-frontend/blob/main/src/assets/images/OAIjak.png?raw=true)
+
 Why do you look like this?
 
 
