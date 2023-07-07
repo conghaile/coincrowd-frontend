@@ -15,7 +15,7 @@ Not enough money or brains. The NER model is pretty shit on account of me being 
 I also tried everything in my power to scrape CG. They just stop responding to traffic from your IP eventually, so I'd need to figure out a big fat convoluted scraper swarm thing in the cloud that uses a bunch of rotating IP addresses, which would end up being nearly as pricey as an API key at scale with the added bonus of risking a copyright fisting.  
 If you sweet babes wanted to crowdfund an API key that'd be freaking epic but I have zero expectations of that actually happening.
  - **Digging into spaCy's source code to figure out why it shits itself on cloud services/writing my own NER training from scratch.**
- I'm just not gonna do it. After this project I'm completely out of fucks to give about ML beyond downloading hot new mikus from /lmg/. If you actually know what you're doing and want to make a better model, I'm still sitting on a fuckload of scraped /biz/ posts that I could be [convinced](mailto:quandaviousgooch@proton.me) to hand over.
+ I'm just not gonna do it. If you actually know what you're doing and want to make a better model, I'm still sitting on a fuckload of scraped /biz/ posts that I could be [convinced](mailto:quandaviousgooch@proton.me) to hand over.
  - **[Your solution that fixes everything quickly and cheaply that I haven't thought of].**
   Fork me, daddy. If there's enough interest that people want to contribute in any way that'd be rad.
 
