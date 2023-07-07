@@ -8,7 +8,7 @@ I made a warosu scraper, a spaCy NER model, and this website. The scraper scrape
 
 ## Why is it so shit?
 
-Not enough money or brains. The NER model is pretty shit on account of me being a VRAMlet and for some reason spaCy's training pipeline explodes in cloud GPU farms; there are a few ways to deal with this and I'm too poor and/or stupid for any of them. These include:
+Not enough money or brains. The NER model alone is pretty shit on account of me being a VRAMlet and for some reason spaCy's training pipeline explodes in cloud GPU farms; there are a few ways to deal with this and I'm too poor and/or stupid for any of them. These include:
 
  - **Bending the knee to CoinGecko/CoinMarketCap/etc and buying an API key**
 	 By far the simplest and most effective solution. Taking a coin the model identifies and searching for it on CG makes this whole thing jarringly accurate, at least when the market's calm enough that most shitcoins aren't pulling 100x before they're listed on CG. This would also give access to price data, which can be overlaid on top of my charts so you can see the relationship between a coin's popularity on /biz/ and its price action. All sorts of silly metrics and indicators could be asspulled by slapping them together.  
