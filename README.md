@@ -27,7 +27,7 @@ Why do you look like this?
 
 ## Why not scrape Twitter/Telegram/etc too?
 
-Scraping Twitter in the laziest, sloppiest manner would be a tremendous pain in the ass. Scraping only crypto posts from Twitter in the most efficient manner possible (wasting as little time on non-crypto accounts and hashtags) is something like an NP-hard problem (unless of course you have a complete list of every hashtag and account under which new shitcoins will be discussed from now until the end of time). Discussion on any other big platform I can think of is laughably terrible. If there's some half-decent altchan or something that should be scraped, [let me know](mailto:quandaviousgooch@proton.me) or fork CoinCrowd and do it yourself.
+~~Scraping Twitter in the laziest, sloppiest manner would be a tremendous pain in the ass. Scraping only crypto posts from Twitter in the most efficient manner possible (wasting as little time on non-crypto accounts and hashtags) is something like an NP-hard problem (unless of course you have a complete list of every hashtag and account under which new shitcoins will be discussed from now until the end of time). Discussion on any other big platform I can think of is laughably terrible.~~ As of July 2023, scraperbros have been ABSOLUTELY BTFO from the vast majority of the internet, we will perhaps never recover. If there's some half-decent altchan or something that should be scraped, [let me know](mailto:quandaviousgooch@proton.me) or fork CoinCrowd and do it yourself.
 
 ## Why not improve the UI further/add more functionality?
 
